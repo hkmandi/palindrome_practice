@@ -8,7 +8,15 @@ For this question, letters are case-sensitive, for example, "Aa" is not consider
 """
 # Change this function so it works correctly
 def longest_palindrome_length(text):
-    return 0
+    original = set()
+    repeated = set()
+    for letter in text:
+        if letter in original:
+            repeated.add(letter)
+        else:
+            original.add(letter)
+    length = len(text) - len(set(text)) + len(repeated) + 1
+    return length
 
 
 if __name__ == '__main__':
