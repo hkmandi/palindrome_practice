@@ -15,13 +15,19 @@ def longest_palindrome_length(text):
             repeated.add(letter)
         else:
             original.add(letter)
-    length = len(text) - len(set(text)) + len(repeated) + 1
-    return length
+
+    if len(text) % 2 == 0:
+        return len(text) - len(set(text)) + len(repeated)
+    else:
+        return len(text) - len(set(text)) + len(repeated) + 1
+
 
 if __name__ == '__main__':
     test_cases = [('abccccdd', 7),      # dccaccd / dccbccd
                   ('a', 1),             # a
-                  ('school', 3)]        # oso / oco / oho / olo
+                  ('school', 3),
+                  ('bbccdd', 6),
+                  ('bb', 2)]        # oso / oco / oho / olo
 
     for test_text, expected in test_cases:
         result = longest_palindrome_length(test_text)
